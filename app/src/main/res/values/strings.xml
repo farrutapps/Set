@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">Set</string>
+
+    <!-- HomeActivity -->
+    <string name="home_btn_1">Play</string>
+    <string name="home_btn_2">Rankings</string>
+
+    <!-- PlayActivity -->
+    <string name="play_btn_1">1 Player</string>
+
+    <!--OnePlayerActivity -->
+    <string name="oneplayer_btn_1">Solo Mode</string>
+    <string name="oneplayer_btn_2">Time Race</string>
+    <string name="oneplayer_btn_3">VS CPU</string>
+
+    <!-- Temp -->
 </resources>
