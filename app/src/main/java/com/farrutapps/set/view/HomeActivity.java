@@ -1,7 +1,9 @@
-package com.farrutapps.set;
+package com.farrutapps.set.view;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.farrutapps.set.R;
 
 public class HomeActivity extends AppCompatActivity {
 
