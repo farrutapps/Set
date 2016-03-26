@@ -14,14 +14,14 @@ android:orientation="vertical" >
 
     <Button
         android:id="@+id/btn_play"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/width_btn"
         android:layout_height="wrap_content"
         android:text="@string/home_btn_1"
         android:layout_gravity="center"/>
 
     <Button
         android:id="@+id/btn_rankings"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/width_btn"
         android:layout_height="wrap_content"
         android:text="@string/home_btn_2"
         android:layout_gravity="center"/>
