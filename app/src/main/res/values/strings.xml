@@ -2,16 +2,22 @@
     <string name="app_name">Set</string>
 
     <!-- HomeActivity -->
-    <string name="home_btn_1">Play</string>
-    <string name="home_btn_2">Rankings</string>
+    <string name="home_btn_play">Play</string>
+    <string name="home_btn_Rankings">Rankings</string>
 
     <!-- PlayActivity -->
-    <string name="play_btn_1">1 Player</string>
+    <string name="play_btn_oneplayer">1 Player</string>
 
     <!--OnePlayerActivity -->
-    <string name="oneplayer_btn_1">Solo Mode</string>
-    <string name="oneplayer_btn_2">Time Race</string>
-    <string name="oneplayer_btn_3">VS CPU</string>
+    <string name="oneplayer_btn_solomode">Solo Mode</string>
+    <string name="oneplayer_btn_timerace">Time Race</string>
+    <string name="oneplayer_btn_vscpu">VS CPU</string>
+
+    <!-- BoardActivity -->
+    <string name="board_tv_score">Score: &#160;</string>
+    <string name="board_btn_hint">Hint</string>
+    <string name="board_btn_solution">Solution</string>
+    <string name="board_btn_pause">||</string>
 
     <!-- Temp -->
 </resources>

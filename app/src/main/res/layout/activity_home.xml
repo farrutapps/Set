@@ -16,14 +16,14 @@ android:orientation="vertical" >
         android:id="@+id/btn_play"
         android:layout_width="@dimen/width_btn"
         android:layout_height="wrap_content"
-        android:text="@string/home_btn_1"
+        android:text="@string/home_btn_play"
         android:layout_gravity="center"/>
 
     <Button
         android:id="@+id/btn_rankings"
         android:layout_width="@dimen/width_btn"
         android:layout_height="wrap_content"
-        android:text="@string/home_btn_2"
+        android:text="@string/home_btn_Rankings"
         android:layout_gravity="center"/>
 
 </LinearLayout>

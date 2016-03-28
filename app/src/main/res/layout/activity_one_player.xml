@@ -15,19 +15,19 @@
     <Button
         android:layout_width="@dimen/width_btn"
         android:layout_height="wrap_content"
-        android:text="@string/oneplayer_btn_1"
+        android:text="@string/oneplayer_btn_solomode"
         android:layout_gravity="center"/>
 
     <Button
         android:layout_width="@dimen/width_btn"
         android:layout_height="wrap_content"
-        android:text="@string/oneplayer_btn_2"
+        android:text="@string/oneplayer_btn_timerace"
         android:layout_gravity="center"/>
 
     <Button
         android:layout_width="@dimen/width_btn"
         android:layout_height="wrap_content"
-        android:text="@string/oneplayer_btn_3"
+        android:text="@string/oneplayer_btn_vscpu"
         android:layout_gravity="center"/>
 
 
