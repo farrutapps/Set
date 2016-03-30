@@ -4,7 +4,9 @@ import java.util.ArrayList;
 
 
 public class board {
-   //members
+
+
+    //members
     private ArrayList<card> activeCards;
     private ArrayList<card> selectedCards;
     private int score;
@@ -12,17 +14,33 @@ public class board {
 
     //constructor
     public board(){
+        // TODO - shall this be done by controller?
         stack = new stack();
 
         for(int i=0; i<12; ++i){
             activeCards.add(stack.pullCard());
         }
-        score = 0;
+        score =0;
     }
 
     //methods:
     public void selectCard(card selectedCard){
+
         selectedCards.add(selectedCard);
+
+        if (selectedCards.size()==3) {
+
+            if(isSet()) {
+
+                deleteSet();
+
+                for(int i=0; i<3; ++i)
+                    if(!stack.isEmpty())
+                        activeCards.add(stack.pullCard());
+            }
+
+            score += 1;
+        }
     }
 
     public void unselectCard(card selectedCard){
@@ -35,7 +53,7 @@ public class board {
         }
         selectedCards.clear();
 
-        score += 1;
+
     }
 
     // TODO: move method into controller??
@@ -52,6 +70,11 @@ public class board {
             }
 
         return true;
+    }
+
+    // Getters and setters
+    public ArrayList<card> getActiveCards() {
+        return activeCards;
     }
 }
 
