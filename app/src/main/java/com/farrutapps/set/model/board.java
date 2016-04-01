@@ -3,19 +3,19 @@ package com.farrutapps.set.model;
 import java.util.ArrayList;
 
 
-public class board {
+public class Board {
 
 
     //members
-    private ArrayList<card> activeCards;
-    private ArrayList<card> selectedCards;
+    private ArrayList<Card> activeCards;
+    private ArrayList<Card> selectedCards;
     private int score;
-    private stack stack;
+    private Stack stack;
 
     //constructor
-    public board(){
-        // TODO - shall this be done by controller?
-        stack = new stack();
+    public Board(){
+
+        stack = new Stack();
 
         for(int i=0; i<12; ++i){
             activeCards.add(stack.pullCard());
@@ -24,7 +24,7 @@ public class board {
     }
 
     //methods:
-    public void selectCard(card selectedCard){
+    public void selectCard(Card selectedCard){
 
         selectedCards.add(selectedCard);
 
@@ -43,12 +43,12 @@ public class board {
         }
     }
 
-    public void unselectCard(card selectedCard){
+    public void unselectCard(Card selectedCard){
         selectedCards.remove(selectedCard);
     }
 
     public void deleteSet(){
-        for(card i:selectedCards){
+        for(Card i:selectedCards){
                 activeCards.remove(i);
         }
         selectedCards.clear();
@@ -56,7 +56,7 @@ public class board {
 
     }
 
-    // TODO: move method into controller??
+
     public boolean isSet(){
 
             for(int i=0; i<4; ++i){
@@ -73,10 +73,93 @@ public class board {
     }
 
     // Getters and setters
-    public ArrayList<card> getActiveCards() {
+    public ArrayList<Card> getActiveCards() {
         return activeCards;
     }
-}
 
+
+    public ArrayList<Card> findSolution(int mode) {
+
+        ArrayList<Card> set = new ArrayList<>(3);
+
+        // fk - different modes for different alogorithms. That way we can later on compare the performance of them.
+        int counterCalculations=0;
+
+        //long startTime = System.nanoTime();
+        //long elapsedTime=0;
+        //elapsedTime=System.nanoTime()-startTime;
+
+        switch (mode) {
+
+            case 0: // brute force method.
+
+                for(int i=0; i<activeCards.size(); ++i){
+                    for(int j=0; j<activeCards.size();++j){
+                        for(int k=0; k<activeCards.size();++k){
+
+                            ++counterCalculations;
+
+                            if(i!=j && i!=k && j!=k){
+                                set.add(activeCards.get(i));
+                                set.add(activeCards.get(j));
+                                set.add(activeCards.get(k));
+
+                                if(isSet()) {
+
+                                    return set;
+                                }
+                            }
+
+                        }
+                    }
+                }
+
+                return set;
+
+            case 1: //improved brute force method, without repetitions
+
+                for(int i=0; i<activeCards.size(); ++i){
+                    for(int j=i+1; j<activeCards.size();++j){
+                        for(int k=j+1; k<activeCards.size();++k){
+
+                                ++counterCalculations;
+
+                                set.add(activeCards.get(i));
+                                set.add(activeCards.get(j));
+                                set.add(activeCards.get(k));
+
+                                if(isSet()) {
+
+                                    return set;
+
+                                }
+                            }
+
+                        }
+                    }
+                }
+
+                return set;
+
+        }
+
+
+
+
+
+
+
+
+    public ArrayList<Card> hint(boolean removeSecondCard){
+
+        ArrayList<Card> result = findSolution(0);
+        result.remove(0);
+
+        if(removeSecondCard==true) {
+            result.remove(0);
+        }
+
+        return result;
+    }
 
 

@@ -4,18 +4,18 @@ import java.util.ArrayList;
 import java.util.Random;
 
 
-public class stack {
+public class Stack {
     //attributes
-    private ArrayList<card> stack;
+    private ArrayList<Card> stack;
 
     //constructor
-    public stack(){
+    public Stack(){
 
         for (int a=0; a<3;++a){
             for (int b=0; b<3; ++b){
                 for (int c=0; c<3; ++c){
                     for (int d=0; d<3; ++d){
-                        stack.add(new card(a,b,c,d));
+                        stack.add(new Card(a,b,c,d));
                     }
                 }
             }
@@ -25,28 +25,28 @@ public class stack {
     }
 
     //methods
-    void mixStack(){
+    public void mixStack(){
 
-        ArrayList<card> tempStack = stack;
-        int stacksize=stack.size();
+        ArrayList<Card> tempStack = stack;
+        int stackSize=stack.size();
         stack.clear();
 
         Random randomNumbers = new Random();
         int randomIndex;
 
-        for (int i=0; i<stacksize;++i){
+        for (int i=0; i<stackSize;++i){
             randomIndex = randomNumbers.nextInt(tempStack.size() - 1);
             stack.add(tempStack.get(randomIndex));
             tempStack.remove(randomIndex);
         }
     }
 
-    card pullCard(){
+    Card pullCard(){
 
-        card returncard;
-        returncard=stack.get(0);
+        Card returnCard;
+        returnCard=stack.get(0);
         stack.remove(0);
-        return returncard;
+        return returnCard;
         }
 
     boolean isEmpty(){
