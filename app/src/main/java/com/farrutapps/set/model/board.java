@@ -152,7 +152,7 @@ public class Board {
 
     public ArrayList<Card> hint(boolean removeSecondCard){
 
-        ArrayList<Card> result = findSolution(0);
+        ArrayList<Card> result = findSolution(1);
         result.remove(0);
 
         if(removeSecondCard==true) {

@@ -6,15 +6,10 @@ import java.util.ArrayList;
 
 
 public class Controller {
-    private Board board;
+    private static Board board;
 
-
-
-    public Controller(){
+    public Controller() {
         board = new Board();
 
     }
-
-
-
 }
