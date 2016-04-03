@@ -19,4 +19,8 @@ public class Card {
     public int getFeature(int index) {
         return features.get(index);
     }
+
+    public ArrayList<Integer> getFeatures(){return features;}
 }
+
+

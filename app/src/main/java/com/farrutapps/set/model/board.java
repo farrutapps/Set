@@ -1,6 +1,8 @@
 package com.farrutapps.set.model;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
 
 
 public class Board {
@@ -83,7 +85,7 @@ public class Board {
         ArrayList<Card> set = new ArrayList<>(3);
 
         // fk - different modes for different alogorithms. That way we can later on compare the performance of them.
-        int counterCalculations=0;
+        int counterCalculations = 0;
 
         //long startTime = System.nanoTime();
         //long elapsedTime=0;
@@ -93,18 +95,18 @@ public class Board {
 
             case 0: // brute force method.
 
-                for(int i=0; i<activeCards.size(); ++i){
-                    for(int j=0; j<activeCards.size();++j){
-                        for(int k=0; k<activeCards.size();++k){
+                for (int i = 0; i < activeCards.size(); ++i) {
+                    for (int j = 0; j < activeCards.size(); ++j) {
+                        for (int k = 0; k < activeCards.size(); ++k) {
 
                             ++counterCalculations;
 
-                            if(i!=j && i!=k && j!=k){
+                            if (i != j && i != k && j != k) {
                                 set.add(activeCards.get(i));
                                 set.add(activeCards.get(j));
                                 set.add(activeCards.get(k));
 
-                                if(isSet()) {
+                                if (isSet()) {
 
                                     return set;
                                 }
@@ -114,34 +116,62 @@ public class Board {
                     }
                 }
 
-                return set;
+                break;
 
             case 1: //improved brute force method, without repetitions
 
-                for(int i=0; i<activeCards.size(); ++i){
-                    for(int j=i+1; j<activeCards.size();++j){
-                        for(int k=j+1; k<activeCards.size();++k){
+                for (int i = 0; i < activeCards.size(); ++i) {
+                    for (int j = i + 1; j < activeCards.size(); ++j) {
+                        for (int k = j + 1; k < activeCards.size(); ++k) {
 
-                                ++counterCalculations;
+                            ++counterCalculations;
 
-                                set.add(activeCards.get(i));
-                                set.add(activeCards.get(j));
-                                set.add(activeCards.get(k));
+                            set.add(activeCards.get(i));
+                            set.add(activeCards.get(j));
+                            set.add(activeCards.get(k));
 
-                                if(isSet()) {
+                            if (isSet()) {
 
-                                    return set;
+                                return set;
 
-                                }
                             }
+
 
                         }
                     }
                 }
 
-                return set;
+                break;
+
+            case 2: // strategy: count occurrences of features.if there is group where all cards have at least one feature equal to all others, check sets within this group first.
+
+                ArrayList<Integer> counterFeatures = new ArrayList<>(4*3); //
+                int tempInt=0;
+
+                // count occurrence of each feature of active cards.
+                for(Card c : activeCards) {
+                    for (int i = 0; i < 4; ++i) {
+                        for (int j = 0; j < 3; ++j) {
+
+                            if (c.getFeature(i) == j) {
+                                counterFeatures.set(i, counterFeatures.get(i) + 1);
+                            }
+                        }
+                    }
+
+
+                }
+
+
 
         }
+
+
+
+
+
+        return set;
+    }
 
 
 
