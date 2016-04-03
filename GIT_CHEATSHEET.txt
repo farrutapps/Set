@@ -1,0 +1,29 @@
+add file to gid repository
+	git add *.cpp
+	git add .
+
+see status of files
+	git status
+
+commit staged changes
+	git commit -m ‚MESSAGE‘
+
+commit all tracked changes
+	git commit -a -m ‚MESSAGE‘
+
+show repository including graph
+	git log --oneline --decorate --graph --all
+
+move HEAD to different version
+	git checkout <tag or id>
+
+tag current version with tag
+	git tag <tag_name>
+
+add remote repository
+git add remote <tag> <url>
+
+push new branch to remote repository
+git push —set-upstream origin new_branch
+
+
