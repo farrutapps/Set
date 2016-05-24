@@ -12,4 +12,13 @@ public class Controller {
         board = new Board();
 
     }
+
+    public static ArrayList<Card> findSolution() {
+        return board.findSolution(1);
+    }
+
+    public static ArrayList<Card> Hint(boolean removeSecondCard) {
+        return board.hint(removeSecondCard);
+    }
+
 }
