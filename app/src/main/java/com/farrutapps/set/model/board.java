@@ -24,34 +24,48 @@ public class Board {
     }
 
     //methods:
+    public void addActiveCard(int number){
+        for (int i=0; i<number; ++i){
+            if(!stack.isEmpty())
+            activeCards.add(stack.pullCard());
+        }
+    }
+    public void cardAction(Card selectedCard){
+
+        if(getSelectedCards().contains(selectedCard)){
+            this.unselectCard(selectedCard);
+        }
+        else this.selectCard(selectedCard);
+    }
+
     public void selectCard(Card selectedCard) {
 
-        selectedCards.add(selectedCard);
+        getSelectedCards().add(selectedCard);
+        selectedCard.setIsSelected(true);
 
-        if (selectedCards.size() == 3) {
+        if (getSelectedCards().size() == 3) {
 
             if (isSet()) {
 
                 deleteSet();
 
-                for (int i = 0; i < 3; ++i)
-                    if (!stack.isEmpty())
-                        activeCards.add(stack.pullCard());
-            }
+                addActiveCard(3);
 
-            score += 1;
+                score += 1;
+            }
         }
     }
 
     public void unselectCard(Card selectedCard) {
-        selectedCards.remove(selectedCard);
+        getSelectedCards().remove(selectedCard);
+        selectedCard.setIsSelected(false);
     }
 
     public void deleteSet() {
-        for (Card i : selectedCards) {
+        for (Card i : getSelectedCards()) {
             activeCards.remove(i);
         }
-        selectedCards.clear();
+        getSelectedCards().clear();
 
 
     }
@@ -59,12 +73,14 @@ public class Board {
 
     public boolean isSet() {
 
+
+
         for (int i = 0; i < 4; ++i) {
 
             // TODO: @WZ - aqui es donde mola tener el ArrayList features. sino deberia hacer 4 de estos ifs gigantes. Cada uno con su getColour, getShape... aqui es getFeature(i) =)
 
-            if ((selectedCards.get(0).getFeature(i) == selectedCards.get(1).getFeature(i) && selectedCards.get(2).getFeature(i) == selectedCards.get(0).getFeature(i))
-                    || (selectedCards.get(0).getFeature(i) != selectedCards.get(1).getFeature(i) && selectedCards.get(2).getFeature(i) != selectedCards.get(0).getFeature(i)) && selectedCards.get(1).getFeature(i) != selectedCards.get(2).getFeature(i)) {
+            if ((getSelectedCards().get(0).getFeature(i) == getSelectedCards().get(1).getFeature(i) && getSelectedCards().get(2).getFeature(i) == getSelectedCards().get(0).getFeature(i))
+                    || (getSelectedCards().get(0).getFeature(i) != getSelectedCards().get(1).getFeature(i) && getSelectedCards().get(2).getFeature(i) != getSelectedCards().get(0).getFeature(i)) && getSelectedCards().get(1).getFeature(i) != getSelectedCards().get(2).getFeature(i)) {
             } else return false;
         }
 
@@ -158,5 +174,9 @@ public class Board {
 
     public int getScore() {
         return score;
+    }
+
+    public ArrayList<Card> getSelectedCards() {
+        return selectedCards;
     }
 }

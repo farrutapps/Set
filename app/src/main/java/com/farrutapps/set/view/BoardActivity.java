@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
+import android.widget.GridView;
 
 import com.farrutapps.set.R;
 import com.farrutapps.set.controller.Controller;
@@ -14,15 +15,16 @@ import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class BoardActivity extends AppCompatActivity {
 
+    private BoardAdapter boardAdapter;
     private Button btnSolution;
     private Button btnHint;
     private Button btnPause;
     private Chronometer chmTime;
+    private GridView cardGrid;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -56,6 +58,19 @@ public class BoardActivity extends AppCompatActivity {
 
         this.chmTime.findViewById(R.id.chm_time);
         this.chmTime.setBase(0);
+
+        this.cardGrid = (GridView) findViewById(R.id.gv_cards);
+
+
+    }
+
+    public void setAdapter() {
+        try {
+            this.boardAdapter =new BoardAdapter(this, Controller.getBoard());
+            this.cardGrid.setAdapter(this.boardAdapter);
+
+        } catch (Exception e) {
+        }
     }
 
     public void setResources() {
@@ -65,7 +80,10 @@ public class BoardActivity extends AppCompatActivity {
             public void onClick(View v) {
                 ArrayList<Card> solution=Controller.findSolution();
 
-                // TODO: Now display solution
+                for (Card c: solution
+                     ) {
+
+                }
             }
         });
 

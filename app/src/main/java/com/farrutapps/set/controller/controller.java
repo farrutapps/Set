@@ -14,11 +14,16 @@ public class Controller {
     }
 
     public static ArrayList<Card> findSolution() {
-        return board.findSolution(1);
+        return getBoard().findSolution(1);
     }
 
     public static ArrayList<Card> Hint(boolean removeSecondCard) {
-        return board.hint(removeSecondCard);
+        return getBoard().hint(removeSecondCard);
     }
 
+
+
+    public static Board getBoard() {
+        return board;
+    }
 }
