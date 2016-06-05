@@ -12,6 +12,8 @@ public class Card {
 
     //constructor
     public Card(int colour, int shape, int texture, int number) {
+        this.features = new ArrayList<Integer>();
+
         this.features.add(colour);
         this.features.add(shape);
         this.features.add(texture);

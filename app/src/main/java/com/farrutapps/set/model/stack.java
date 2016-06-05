@@ -1,6 +1,7 @@
 package com.farrutapps.set.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 
@@ -11,22 +12,29 @@ public class Stack {
     //constructor
     public Stack(){
 
-        for (int a=0; a<3;++a){
-            for (int b=0; b<3; ++b){
-                for (int c=0; c<3; ++c){
-                    for (int d=0; d<3; ++d){
-                        stack.add(new Card(a,b,c,d));
+        this.stack = new ArrayList<Card>();
+
+        generateCards();
+        mixStack();
+    }
+
+    private void generateCards() {
+
+        for (int colour=0; colour<3;++colour){
+            for (int shape=0; shape<3; ++shape){
+                for (int filling=0; filling<3; ++filling){
+                    for (int number=0; number<3; ++number){
+                        stack.add(new Card(colour,shape,filling,number));
                     }
                 }
             }
         }
 
-    mixStack();
     }
 
     //methods
     public void mixStack(){
-
+/*
         ArrayList<Card> tempStack = stack;
         int stackSize=stack.size();
         stack.clear();
@@ -39,7 +47,10 @@ public class Stack {
             stack.add(tempStack.get(randomIndex));
             tempStack.remove(randomIndex);
         }
+    */
+        Collections.shuffle(this.stack);
     }
+
 
     Card pullCard(){
 

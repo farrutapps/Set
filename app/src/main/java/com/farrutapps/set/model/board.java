@@ -14,6 +14,8 @@ public class Board {
 
     //constructor
     public Board() {
+        this.activeCards = new ArrayList<Card>();
+        this.selectedCards = new ArrayList<Card>();
 
         stack = new Stack();
 
