@@ -1,12 +1,15 @@
 package com.farrutapps.set.view;
 
+import android.app.Activity;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
+import android.widget.GridLayout;
 import android.widget.GridView;
+import android.widget.LinearLayout;
 
 import com.farrutapps.set.R;
 import com.farrutapps.set.controller.Controller;
@@ -19,12 +22,12 @@ import java.util.ArrayList;
 
 public class BoardActivity extends AppCompatActivity {
 
-    private BoardAdapter boardAdapter;
+    //private BoardAdapter boardAdapter;
     private Button btnSolution;
     private Button btnHint;
     private Button btnPause;
     private Chronometer chmTime;
-    private GridView cardGrid;
+    private LinearLayout fieldLandscape;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -41,7 +44,7 @@ public class BoardActivity extends AppCompatActivity {
 
         initResources();
         setResources();
-        setAdapter();
+
         chmTime.start();
         isTimeRunning=true;
 
@@ -57,19 +60,8 @@ public class BoardActivity extends AppCompatActivity {
         this.chmTime = (Chronometer) findViewById(R.id.chm_time);
         this.chmTime.setBase(0);
 
-        this.cardGrid = (GridView) findViewById(R.id.gv_cards);
 
 
-    }
-
-    public void setAdapter() {
-        try {
-            this.boardAdapter =new BoardAdapter(this, Controller.getBoard().getActiveCards());
-            this.cardGrid.setAdapter(this.boardAdapter);
-            this.boardAdapter.notifyDataSetChanged();
-
-        } catch (Exception e) {
-        }
     }
 
     public void setResources() {
@@ -112,8 +104,6 @@ public class BoardActivity extends AppCompatActivity {
         });
 
     }
-
-
 
 
 }

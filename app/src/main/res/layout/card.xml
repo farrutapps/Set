@@ -1,19 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/rl_card"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_card"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_centerInParent="true">
-
-
+    android:orientation="horizontal">
 
     <ImageButton
         android:id="@+id/ib_card"
-
-        android:src="@drawable/peanut"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerInside"
-        />
+        android:src="@drawable/dimens_card"/>
 
-</RelativeLayout>
+</LinearLayout>
